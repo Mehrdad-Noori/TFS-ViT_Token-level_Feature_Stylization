@@ -2,7 +2,7 @@
 
 The official implementation of our paper "TFS-ViT: Token-Level Feature Stylization for Domain Generalization".
 
-![image](Figs/main.png)
+![image](figs/main.png)
 
 Standard deep learning models such as convolutional neural networks (CNNs) lack the ability of generalizing to domains which have not been seen during training. This problem is mainly due to the common but often wrong assumption of such models that the source and target data come from the same i.i.d. distribution. Recently, Vision Transformers (ViTs) have shown outstanding performance for a broad range of computer vision tasks. However, very few studies have investigated their ability to generalize to new domains. This paper presents a first Token-level Feature Stylization (TFS-ViT) approach for domain generalization, which improves the performance of ViTs to unseen data by synthesizing new domains. Our approach transforms token features by mixing the normalization statistics of images from different domains. We further improve this approach with a novel strategy for attention-aware stylization, which use the attention maps of class (CLS) tokens to compute and mix normalization statistics of tokens corresponding to different image regions. The proposed method is flexible to the choice of backbone model and can be easily applied to any ViT-based architecture with a negligible increase in computational complexity. Comprehensive experiments show that our approach is able to achieve state-of-the-art performance on five challenging benchmarks for domain generalization, and demonstrate its ability to deal with different types of domain shifts.
 
@@ -65,11 +65,11 @@ python -m domainbed.scripts.collect_results\
 ### Results
 1- Comparison of our proposed methods with previous SOTA on five datasets:
 
-![image](Figs/res1.png)
+![image](figs/res1.png)
 
 2- Detailed results on the PACS dataset (detailed results of other datasets can be found in the supplementary materials)
 
-![image](Figs/res2.png)
+![image](figs/res2.png)
 
 
 ### Visualizations
@@ -77,13 +77,13 @@ python -m domainbed.scripts.collect_results\
 
 Comparison of attention maps between the baseline ERM-ViT and our proposed TFS-ViT (backbone: DeiT-Small) on different domains of the PACS dataset (attention maps for other datasets can be found in the supplementary materials).
 
-![image](Figs/vis1.png)
+![image](figs/vis1.png)
 
 2- Stylization Visualization 
 
 In order to get a better understanding of our proposed token-level feature stylization method, we use a simple ViT-based encoder-decoder network without performing any stylization. When the training is finished, we perform token-level stylization in the encoder using a batch of input images - precisely like what we do in TFS-ViT - and try to reconstruct images to see the effect of stylization at the pixel level (for more details please see the supplementary materials).
 
-![image](Figs/vis2.png)
+![image](figs/vis2.png)
 
 As can be seen from the figure, stylizing random layers in addition to stylizing random tokens (in this case d=0.5) results in creating more diverse samples. These diverse synthetic features generated from different domains are able to simulate different kinds of domain shifts during training and accordingly force the network to learn domain-invariant features.
 
